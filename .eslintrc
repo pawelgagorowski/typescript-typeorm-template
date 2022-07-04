@@ -1,0 +1,23 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  },
+  "plugins": ["@typescript-eslint/eslint-plugin", "prettier"],
+  "extends": ["prettier", "eslint:recommended", "airbnb-base", "airbnb-typescript/base", "eslint-config-prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": true,
+        "printWidth": 120,
+        "endOfLine": "auto",
+        "trailingComma": "none"
+      }
+    ],
+    "class-methods-use-this": "off",
+    "@typescript-eslint/lines-between-class-members": "off"
+  }
+}
