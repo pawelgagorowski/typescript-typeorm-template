@@ -1,33 +1,34 @@
 {
-    "compilerOptions": {
-      "target": "es2018",
-      "module": "commonjs",
-      "declaration": true,
-      "outDir": "./backend/dist",
-      "strict": true,
-      "moduleResolution": "node",
-      "esModuleInterop":true,
-      "inlineSourceMap": false,
-      "lib": ["es2020"],
-      "noImplicitAny": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "noImplicitReturns": true,
-      "allowSyntheticDefaultImports": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "removeComments": true,
-      "resolveJsonModule": true,
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "strictNullChecks": true
-    },
-    "include": [
-      ".eslintrc.js",
-      "./backend/src/**/*",
-      "./backend/tests/**/*",
-      "./gulpfile.js",
-      "./commitlint.config.js", "weclappAPI.spec.ts"
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "inlineSourceMap": false,
+    "lib": ["es2020"],
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true
+  },
+  "include": [
+    ".eslintrc.js",
+    "./backend/src/**/*",
+    "./backend/tests/**/*",
+    "./gulpfile.js",
+    "./commitlint.config.js",
+    "weclappAPI.spec.ts"
   ],
-    "exclude": ["node_modules"]
-  }
+  "exclude": ["node_modules"]
+}
