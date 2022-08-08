@@ -1,14 +1,23 @@
 {
+  "ts-node": { "files": true },
+  "files": ["src/@types/express/index.d.ts", "src/@types/environment.d.ts", "src/@types/definitions.d.ts"],
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ],
     "target": "es2018",
     "module": "commonjs",
     "declaration": true,
     "outDir": "./dist",
     "strict": true,
+    "baseUrl": ".",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "inlineSourceMap": false,
-    "lib": ["es2020"],
+    "lib": ["es2020", "dom"],
+    "checkJs": false,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -20,15 +29,18 @@
     "resolveJsonModule": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "types": ["jest"],
+    "paths": {
+      "@config/*": ["src/shared/config/*"],
+      "@helpers/*": ["src/shared/helpers/*"],
+      "@server/*": ["src/shared/server/*"],
+      "@database/*": ["src/shared/database/*"],
+      "@user/*": ["src/user/*"],
+      "@shop/*": ["src/shop/*"],
+      "@/*": ["src/*"]
+    }
   },
-  "include": [
-    ".eslintrc.js",
-    "./backend/src/**/*",
-    "./backend/tests/**/*",
-    "./gulpfile.js",
-    "./commitlint.config.js",
-    "weclappAPI.spec.ts"
-  ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./node_modules/*", "dist"],
+  "include": ["src", "entities.ts", "src/tests"]
 }

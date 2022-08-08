@@ -1,0 +1,18 @@
+{
+  "transform": {
+    "^.+\\.(t|j)sx?$": "ts-jest"
+  },
+  "testRegex": ["/src/tests/unitTests/.*.test.js", "/src/tests/unitTests/.*.test.ts"],
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "collectCoverage": true,
+  "setupFiles": ["<rootDir>/src/tests/setEnvVars.ts"],
+  "moduleNameMapper": {
+    "@/(.*)$": "<rootDir>/src/$1",
+    "@server(.*)$": "<rootDir>/src/shared/server$1",
+    "@config(.*)$": "<rootDir>/src/shared/config$1",
+    "@helpers(.*)$": "<rootDir>/src/shared/helpers$1",
+    "@database(.*)$": "<rootDir>/src/shared/database$1",
+    "@user(.*)$": "<rootDir>/src/user$1",
+    "@shop(.*)$": "<rootDir>/src/shop$1"
+  }
+}

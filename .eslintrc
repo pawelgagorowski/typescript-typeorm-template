@@ -8,7 +8,7 @@
   "extends": ["prettier", "eslint:recommended", "airbnb-base", "airbnb-typescript/base", "eslint-config-prettier"],
   "rules": {
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "singleQuote": true,
         "semi": true,
@@ -18,6 +18,10 @@
       }
     ],
     "class-methods-use-this": "off",
-    "@typescript-eslint/lines-between-class-members": "off"
+    "@typescript-eslint/lines-between-class-members": "off",
+    "import/named": "off",
+    "import/extensions": "off",
+    "no-unused-vars": "off",
+    "import/export": "off"
   }
 }

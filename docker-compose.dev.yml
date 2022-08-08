@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus-grafana/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./prometheus-grafana/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./prometheus-grafana/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
+    ports:
+      - 3000:3000
+    links:
+      - prometheus
+  node-app:
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./:/usr/src/app
+      # kind of trick to do not sync node_modules directory
+      - /usr/src/app/node_modules
+    depends_on:
+      - db
+    ports:
+      - 4000:4000
+    command: npm run dev

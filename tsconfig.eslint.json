@@ -1,4 +1,13 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.js", "test/**/*.ts"]
+  "files": ["@types", "@types/express/index.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "tests/unitTests/**/*.test.ts",
+    "tests/**/*.test.*",
+    "@types",
+    "@types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }

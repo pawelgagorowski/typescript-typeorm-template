@@ -1,25 +1,10 @@
-import express from 'express';
-import SystemController from './api';
-import { IController, ICollection } from '../shared/server/types';
-import useFeature from '../shared/config/utils';
-import GetConfigFileController from './file';
-import COLLECTION from '../shared/config/collections';
+import Collection from '@server/collection';
+import logger from '@config/logger/instance';
+import { ApiPath } from '@server/types';
+import HealtController from './health';
+import ConfigController from './config';
 
-class Collection implements ICollection {
-  public collectionName: COLLECTION;
-  constructor(private controllers: IController[]) {
-    this.collectionName = COLLECTION.SYSTEM;
-  }
-
-  public addControllers(app: express.Application): void {
-    console.log('collection:', this.collectionName);
-    this.controllers.forEach((controller) => {
-      if (useFeature(controller.feature)) {
-        console.log(`${controller.method} => ${controller.path}`);
-        app.use('/', controller.router);
-      }
-    });
-  }
-}
-
-export default new Collection([new SystemController(), new GetConfigFileController()]);
+export default new Collection(logger, 'system', [
+  new HealtController({ logger }, { path: ApiPath.HEALTH_CHECK, method: 'get', feature: 'health' }),
+  new ConfigController({ logger }, { path: ApiPath.CONFIG, method: 'get', feature: 'config' })
+]);
